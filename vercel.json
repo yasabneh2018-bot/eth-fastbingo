@@ -3,5 +3,5 @@
   "buildCommand": "NITRO_PRESET=vercel vite build && node scripts/vercel-build.mjs",
   "outputDirectory": ".vercel/output",
   "framework": null,
-  "installCommand": "bun install"
+  "installCommand": "npm ci"
 }
