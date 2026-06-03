@@ -26,7 +26,8 @@ cpSync(join(dist, "server"), fnDir, { recursive: true });
 // Write Vercel function config so the platform can load the function.
 // Include multiple common keys to be compatible with different platform checks.
 const fnConfig = {
-  runtime: "nodejs18.x",
+  // Use a currently supported Node runtime for Vercel functions.
+  runtime: "nodejs20.x",
   // Common variants: `handler` (older), `entrypoint` (official), `launcher` (some tools)
   handler: "server.js",
   entrypoint: "server.js",
