@@ -24,9 +24,10 @@ mkdirSync(fnDir, { recursive: true });
 cpSync(join(dist, "server"), fnDir, { recursive: true });
 
 // Write Vercel function config so the platform can load the function
+// Vercel expects a string `handler` value pointing at the entry file.
 const fnConfig = {
   runtime: "nodejs18.x",
-  entrypoint: "server.js"
+  handler: "server.js"
 };
 writeFileSync(join(fnDir, ".vc-config.json"), JSON.stringify(fnConfig, null, 2));
 

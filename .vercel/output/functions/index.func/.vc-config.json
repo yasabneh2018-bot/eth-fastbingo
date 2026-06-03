@@ -1,4 +1,4 @@
 {
   "runtime": "nodejs18.x",
-  "entrypoint": "server.js"
+  "handler": "server.js"
 }
