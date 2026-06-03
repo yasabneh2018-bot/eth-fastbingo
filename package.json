@@ -67,7 +67,7 @@
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2"
   },
-  "optionalDependencies": {
+  "dependencies": {
     "h3-v2": "npm:h3@2.0.1-rc.22"
   },
   "devDependencies": {
