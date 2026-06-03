@@ -1,5 +1,0 @@
-{
-  "runtime": "nodejs20.x",
-  "entrypoint": "server.js",
-  "handler": "server.js"
-}
