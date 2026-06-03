@@ -34,6 +34,13 @@ const fnConfig = {
   launcher: "server.js"
 };
 writeFileSync(join(fnDir, ".vc-config.json"), JSON.stringify(fnConfig, null, 2));
+// Also write a config.json variant some Vercel checks may use.
+const fnConfigAlt = {
+  runtime: fnConfig.runtime,
+  entrypoint: fnConfig.entrypoint,
+  handler: fnConfig.handler,
+};
+writeFileSync(join(fnDir, "config.json"), JSON.stringify(fnConfigAlt, null, 2));
 
 // Build Output API config — route all non-static requests to the function
 const config = {
