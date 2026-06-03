@@ -23,6 +23,13 @@ const fnDir = join(out, "functions", "index.func");
 mkdirSync(fnDir, { recursive: true });
 cpSync(join(dist, "server"), fnDir, { recursive: true });
 
+// Write Vercel function config so the platform can load the function
+const fnConfig = {
+  runtime: "nodejs18.x",
+  entrypoint: "server.js"
+};
+writeFileSync(join(fnDir, ".vc-config.json"), JSON.stringify(fnConfig, null, 2));
+
 // Build Output API config — route all non-static requests to the function
 const config = {
   version: 3,

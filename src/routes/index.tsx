@@ -937,6 +937,26 @@ function GameView({
   const runningRef = useRef(false);
   const sharedOrder = useMemo(() => drawOrderForGame(status.gameNo), [status.gameNo]);
 
+  const focusJoinButton = () => {
+    const btn = Array.from(document.querySelectorAll('button')).find((b) => /\b(Join|Play)\b/i.test(b.textContent || ""));
+    (btn as HTMLElement | undefined)?.focus?.();
+  };
+
+  const resetLobbyState = () => {
+    setDrawn([]);
+    setCurrentBall(null);
+    setDaubedManual(new Set([12]));
+    setCartella(Array(25).fill(0));
+    setCartella2(Array(25).fill(0));
+    setCartellaId(null);
+    setCartellaId2(null);
+    lockedTicketRef.current = null;
+    setLocked(false);
+    setStakeChosen(false);
+    onChange();
+    setTimeout(focusJoinButton, 60);
+  };
+
   // Cross-device cartella picks and winner for the current round.
   const takenCartellas = useTakenCartellas(status.gameNo);
   const serverWinner = useGameWinner(status.gameNo);
@@ -1050,6 +1070,7 @@ function GameView({
       setCurrentBall(null);
       setWinner(null);
       setRevealing(null);
+      resetLobbyState();
     }
   }, [status.drawing]);
 
